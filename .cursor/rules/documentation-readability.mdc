@@ -1,0 +1,7 @@
+---
+alwaysApply: true
+---
+- Include comments on each line, function strut etc so that it's easy for a non engineer to read 
+- comments should include a high level summary of what the whole code is doing for that file right at the top of each file.  
+- Update the projects readme when adding new features to explain how different parts of the project flow together.
+- Update the readme with a list of entities and a description of each

@@ -1,0 +1,10 @@
+---
+alwaysApply: true
+---
+- We are building a HomeAssistant integration for a BBQ controller. The BBQ Controller currently implements a webUI. We are reverse engineering this webUI to create our integration. The /Users/arielgeffen/Documents/Git/Muxall-HomeAssistant/Reference Files directory contains *.html & *.js files for the web UI as well as exported websocket logs from the webUI and the user manual. All these files are for reference only and should not be edited or recommended for edits. These files should be referenced when debugging, adding or editing features to ensure the correct flows, intent and logic are adhered to
+- We want to implement all the capabilities in our integration
+- We do not have access to the server code and can make no changes to the server side.
+- The server is the source of truth for values that are actively in use. Any changes made set in our integration need to be sent to the server before coming into effect on the device itself
+- So long as the server is online, and our integration is connected - we want to always show current values (not cached) from the server (e.g BBQ Config, Chamber Temp, Target Temp, Current Smoke Profile etc).
+- By its nature, the server is not necessarily permanently connected. We will need to occasionally check for its connectivity.
+- When coming into a connected state, no pending user changes should be applied without confirmation

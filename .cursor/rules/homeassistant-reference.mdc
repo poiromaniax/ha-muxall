@@ -1,0 +1,5 @@
+---
+alwaysApply: true
+---
+- The reference documentation for HomeAssistant development is found https://developers.home-assistant.io/
+- Adhere to HomeAssistant development guidelines and instructions

@@ -1,0 +1,513 @@
+
+USERNAME AND PASSWORD DEFAULTS
+The default username and password to access the web app is: muxall
+
+On your PC, tablet, or phone, launch Chrome, Firefox, Safari, or your favorite web browser.
+Enter the IP address in the address bar then press Enter or Go.
+You should see this login screen.
+
+Enter the default username and password muxall then click on Login.
+If asked to save the password, click on Yes to save time in the future.
+
+
+
+
+NOTE – Your browser may display a WARNING about an unsecure website when you first login to the App. Just click OK or CONTINUE. This should only happen when you first login to the controller.
+ 
+Web App
+ADD TAB BUTTON pulls up the web app’s Controller Menu.
+
+
+CONTROLLER MENU
+GRAPH TAB – For historical graphing.
+CONFIG TAB – For network, probes, and PATC
+UPDATE TAB – For performing web app and firmware updates.
+Click on “X” in a tab’s corner to
+close it.
+
+
+HELP BUTTON Gets the latest User’s Manual from the Muxall LLC
+website. Requires a PDF Reader.
+ 
+Status
+
+COOKING STATUS
+Current Profile - The profile being executed by the controller. Time Remaining – The time left in the profile being executed. Target Chamber Temp – Set temp in the profile being executed. Chamber Temp – Current temp of the pit.
+
+
+COOK STATE
+Cook By Probe # - The Meat Probe number used. 0=disabled. Cook By Probe Target Temp – Desired Meat Temperature BBQ State – Off, Ignite Fire, Run, Pause, Cool Down
+DC ON / DC OFF – Auger’s current Duty Cycle ON / OFF
+Fan Speed% - How fast the fan is running. 100% is full speed.
+PROBES DATA
+Probe # Temp - Current temperature of meat probes Outside Temp – Temp of on-board sensor.
+ 
+Front panel and Web App
+REFILL PELLET HOPPER level can be done using the front panel or web app.
+
+
+From the Control tab in the web app, scroll down to Pellet Hopper and click “Fill”.
+
+
+
+Enter how much fuel (pellets) was added as a percentage.
+100 = Full, 50 = half full, etc. Click OK.
+
+
+
+
+The green fuel gauge should reflect the amount of pellets added.
+
+
+
+
+NOTE – Refilling the Pellet Hopper resets the Auger Run Minutes.
+
+Pro Tip – Pellets can also be removed and graph adjusted by setting the percent fill level lower.
+ 
+COOKING PROFILES 1-4 are executed automatically by the Pro BBQ Controller in numerical order 1 --> 4 unless the “Hold” checkbox is checked.
+
+On the Control tab, scroll down to Cook Settings
+TARGET TEMP is the desired target chamber (pit) temp.
+COOK TIME is how long to stay in this profile. This also includes the ramp up/down to reach the target temperature
+HOLD prevents the controller from moving to the next profile.
+You should have one profile with the Hold checkbox checked when using Cook-By-Probe.
+
+
+NOTE – The Pro BBQ Controller defaults Profile 1 with “Hold”
+checked. You must un-check the “Hold” box to use Profiles 2-4.
+
+Pro Tip – Make sure to include enough time for changing temperatures. For example, if your grill takes 20 minutes to reach 350F and you want to cook for 120 minutes at 350F, set the Cook Time to 140 minutes.
+ 
+Smoke Control changes the amount of smoke used in the cook by swinging the temp around the target chamber temp.
+
+
+PRECISION COOK – Tries to hold the target temp as closely as possible.
+MINIMUM SMOKE – Very little swinging of the pit temp.
+MEDIUM SMOKE – When Max Smoke is too much.
+MAX SMOKE – Call the fire department!
+Humidity, grill construction, wood flavors, and target temperature all affect how well the controller swings the pit temp.
+Insulated grills will hardly swing so Precision Cook is recommended.
+
+From the Control tab in the web app, scroll down to Smoke Control. The Pro BBQ Controller defaults to “Maximum Smoke”.
+Select desired smokiness and then click on “Submit”.
+
+Pro Tip - Precision Cook uses a different algorithm in PATC and may produce more consistent smoke which could give you better temperature accuracy and smoke than Minimum Smoke.
+ 
+These settings tell the Controller how to determine when a cook is done and what to do afterward.
+There are three ways to cook with the Muxall Pro BBQ Controller:
+HOT DOG EASY – Basically, turn the grill on, set a temp and start cooking. The grill will stay at the set temp forever until the user ends the cook.
+COOK BY TIME – Enter Target Temps and Cook Times in any or all of the four profiles (1-4) without Hold checked in any of the four profiles. The grill will start from Profile 1 and go to Profile 4 following the temps and times set. When it gets to the end of Profile 4, the cook is done.
+COOK-BY-PROBE – The same as Cook-By-Time except Hold is checked in the last profile you intend to use. When the meat reaches the Target Probe Temp, the cook is done.
+
+Cook By Probe
+ENABLE COOK-BY-PROBE
+Cook-By-Probe uses a meat probe to measure the temperature and compare that reading to its set temperature; in this case, 145F.
+From the Control tab in the web app, scroll down to Ending Control. Cook By Probe is off by default and shows “None” for probe number.
+To enable Cook By Probe, mark the checkbox. Using the dropdown, select which probe number you want to use for Cook By Probe.
+ 
+
+ 
+
+You can manually enter a Custom target probe temperature or select a predefined Target Probe Temperature. The predefined selections are: Beef, Veal Lamb, Grnd Meats, Poultry, and Pork. These are the “Safe Minimum Cooking Temperatures” posted by the
+U.S. Department of Health. See foodsafety.gov for more info. Press Submit after changes.
+GRAPHING THE MEAT PROBE – Only the selected meat probe is graphed and Cook-By-Probe must be enabled. To use your meat probe to monitor and graph temperature without it shutting the grill off, you can set a Custom Target Probe Temp to 400F or 500F.
+
+Ending The Cook
+
+
+WHAT TO DO AFTER COOK - After Cook-By-Time or Cook-By-Probe finishes, the controller can do one of two actions:
+TURN OFF WHEN DONE – is the default action and puts the grill into Cool Down state and then turns the grill off.
+SMOKE WHEN DONE – tries to drop the temp of the grill down to 150F and keeps it at that temp until you turn the grill off. It’s like a Keep Warm mode but a little hotter. Press Submit after changes.
+ 
+Saving Recipes can only be done using the Web App.
+
+SAVE RECIPE - From the Control tab in the web app, scroll down to - Recipe-. The Default recipe is used by the Pro BBQ Controller when first turned on. You cannot save any changes to the Default recipe.
+
+
+Once everything (Cooking Profiles, Smoke Control, Cook By Probe) are set the way you want them, you can save these settings in a recipe.
+To save a recipe, type in a name in the recipe textbox and click on Save.
+NOTE – Saving a recipe does not submit your settings. You must click on the Enter/Save button for the recipe to be used by the controller.
+
+RATE RECIPE - If you like the way the cook turned out, you can rate the recipe using the dropdown with the hearts. You can give your recipes 1-5 hearts. Click “Submit” when done.
+ 
+Retrieving and Deleting Recipes can only be done using the Web App.
+
+From the Control tab in the web app, scroll down to “-Recipe-“. The Default recipe is used by the Pro BBQ Controller when first turned on. You cannot delete the Default recipe.
+ 
+DELETE RECIPE - After a recipe has been saved or retrieved, the button on the right will show Delete. Clicking on Delete will remove the recipe that is showing. You cannot delete the Default recipe.
+
+
+
+RETRIEVE RECIPE - Click on the dropdown arrow and then click on the recipe you want. The recipe will be loaded in the Web App but not submitted. You must click on “Enter/Save” to run a retrieved recipe.
+ 
+Variable fan speeds will be used for cooking at low temperatures. This setting can be changed on the fly.
+FAN SPEED
+Auto – Default. The controller will automatically slow the fan down when cooking at low temps.
+10% - 100% - Manual settings. The controller will use this setting when cooking below 200F.
+Press Submit after changing.
+
+FAN SPEED STATUS
+The Fan Speed % reports how fast the fan is currently running.
+
+
+
+Warning – Enable Flame-Out Detection, in the config tab, when cooking at very low temperatures (less than 180) in hot weather.
+
+Warning – Testing has shown that cooking at 10% fan is not
+enough to keep the fire lit. Auto’s lowest fan speed is 20%.
+Pro Tip – You don’t need to change the Smoke Control setting when using multiple profiles with high temps and low temps.
+When the fan speed is less than 100%, Auto or fixed percent setting, the Smoke Control setting is disabled and Precision Cook is automatically used. The smoke control setting is used when the fan speed goes back up to 100% with higher temps.
+ 
+Manual Overrides controls are only available in the web app and can
+only be used when the grill is “Off” or “Paused”.
+
+FAN OVERRIDE
+Checking the Fan Override checkbox turns the fan on. Press Submit to run.
+
+
+Pro Tip – Fan Override is useful for cold smoking. Manual Fan
+Override will run the fan at 100% if the Fan Speed is set on “Auto”. Otherwise, Manual Fan Override will run the fan at the selected speed.
+
+AUGER OVERRIDE
+Checking the Auger Override checkbox turns the auger on. Press Submit to run.
+
+
+Pro Tip – Auger Override is useful when changing pellets.
+ 
+Stats Control settings can only be set using the web app.
+
+From the Control tab in the web app, scroll down to Stats Control. Post Stats every 7 seconds is enabled by default. Press Submit after changes.
+Warning - Disabling Post Stats will stop all updates to the Web App from the Pro BBQ Controller.
+Pro Tip – For long cooks, setting Post Rate to 20 seconds will reduce the amount of data stored on the device you are using to monitor the Pro BBQ Controller.
+
+Enter/Save & Start/Stop
+Front Panel and Web App
+ENTER/SAVE BUTTON – Submits all the settings in the Control tab to the controller.
+START BUTTON – Starts the cook and sets the controller state to Ignite Fire.
+STOP BUTTON – Stops the cook and sets the controller state to Cool Down.
+NOTES – If the Client State or Device State is not “READY”, then an error dialog will pop-up. Client State is the Web App and Device State is the Muxall Pro BBQ Controller.
+ 
+Pellets Level Tracking
+RESETTING AUGER RUN MINUTES
+Resetting the Auger Run minutes is done by refilling the pellet hopper to 100% in the Control tab screen.
+REFILL PELLET HOPPER – Can be performed either from the Control tab in the web app or from Smoke page on front panel of controller.
+From the Config tab in the web
+app, scroll down to “Pellets Level Tracking”.
+Pellets Level Tracking is enable by default. To disable, unmark the “Enable” checkbox.
+Click “Save” after changes.
+
+
+FULL TO EMPTY AUGER RUN MINUTES -CALCULATION
+The Pro BBQ Controller tracks pellet usage based on how long the auger has run (Auger Run Minutes) since the hopper was last refilled.
+To calculate Full to Empty Auger Run Minutes:
+1.	With the grill cold, reset the pellets level to 100% which will reset the auger run time. Do not fill pellet hopper to 100%.
+2.	Manually turn the auger on using the Manual Auger Control in the web app.
+3.	Time how long it takes for your auger to dump 1 cup of pellets into your burn pot by reading the Auger Run Minutes.
+4.	Count how many cups of pellets it takes to fill up your hopper to 100% full.
+5.	Enter the #cups x #minutes = Full to Empty Auger Run Minutes in the config tab.
+7. Click “Save” when done.
+ 
+Pellet Hopper Vibrator
+Web App
+The optional Pellet Hopper Vibrator (PHV) is used to prevent tunnels, clogs, and sticking between the pellets and between the pellets and the hopper walls.
+From the Config tab in the web app, scroll down to “Pellet Hopper Vibrator”.
+PHV is disabled by default. To enable, mark the “Enable” checkbox.
+Click “Save” after changes.
+
+The PHV only runs in the Ignite Fire, Run and Smoke states or when the PHV Manual Override box is checked.
+
+In AugerTime and Timer modes, the PHV will also run when first starting a cook to fix tunnels or loosen the pellets from the previous cook or long term storage.
+
+1.	AugerTime – The PHV will run a number of minutes every number of Auger Run Minutes.
+2.	Timer – The PHV will run a number of minutes at a set interval.
+3.	RunWithAuger – The PHV will run when the auger runs.
+4.	Continuous – The PHV runs continuously.
+
+NOTE - To use the PHV, there must be a wire with a molex connector installed in the plated hole marked with “Spare” located on the back of the controller. PHV is an optional upgrade. To have your controller upgraded, contact Muxall at: support@muxall.com.
+ 
+Network Settings
+Front Panel & Web App
+WiFi SSID and Password can only be set from the Front Panel. Controller Name, DHCP and static IP Addresses are only settable from the web app.
+
+From the Config tab in the web
+app, scroll down to “Network”.
+
+WIFI SSID – Veiw Only
+WIFI PASSWORD – View Only
+
+
+
+
+CONTROLLER NAME – Is
+the hostname of the controller.
+ENABLE MDNS – Multicast DNS is experimental and uses the hostname to build a URL to access the web app
+USE DHCP – Makes the controller get an IP address from your WiFi router.
+STATIC IP ADDRESS –
+Uncheck “Use DHCP” if you want to set a permanent IP Address**
+**Warning – You MUST set your WiFi router to not use the permanent (aka static) IP address or you’ll end up with duplicate IP address conflicts.
+DUPLICATE IP ADDRESSES – Two devices have the same IP address.
+ 
+Web App
+Setting Temperature Probes can only be done using the web app. The Muxall Pro BBQ Controller supports RTDs, Thermocouples and Thermistors. Thermocouples are rarely used in pellet BBQ grills.
+From the Config tab in the web app, scroll down to “Temperature Probes”.
+This shows the current settings of the Meat Probes and Chamber Probe.
+Click “Save” when done.
+
+
+Pro Tip – To quickly identify if a temperature probe is an RTD or Thermistor, use an ohm meter to measure the resistance of the probe. RTDs range from 100 ohms to 2000 ohms where thermistors usually range from 10K ohms to 1M ohms.
+ 
+RTD TYPES
+Resistance Temperature Detectors (RTDs) are used extensively in pellet grills. PT-1000 and PT-100 probes are the most common. Platinum (PT) and Nickel (NI) RTD types are settable under Model.
+
+PT-1000 – By far the most common meat probe –Default.
+PT-100 – Is also common with better accuracy and usually 3 or 4 wires.
+The number after the metal type is the resistance of the sensor at 0 C (32 F). For example:
+PT-1000 = 1000 ohms @ 32 F
+
+Conductors are the number of wires coming from the RTD.
+2-	Wire is almost always used for chamber probes and most meat probes.
+3-	Wire and 4-Wire are used for high accuracy meat probes.
+Click “Save” when done.
+
+Note - 3-Wire meat probes will work with a 2-Wire setting but a 2- Wire meat probe WILL NOT work with a 3-Wire setting. If your 3- Wire meat probe is not working, try setting it to 2-Wire.
+ 
+THERMISTOR TYPES
+Thermistors used with pellet grills are typically Negative Temperature Coefficient (NTC) types and are identified by their resistance at 25 degrees Celsius.
+Thermistors are widely used in meat probes because of their energy efficiency for use with battery operated devices.
+Thermistors meat probes are almost always 2-Wire.
+Click “Save” when done.
+
+
+CAMPCHEF – Two conductor probe, does not require 2.5mm adapter.
+FIREBOARD – Two conductor probe, does require 2.5mm adapter. MAVERICK – Two conductor probe, does require 2.5mm adapter. INKBIRD – Two conductor probe, does require 2.5mm adapter.
+THERMOPRO – Two conductor probe, does require 2.5mm adapter.
+Pro Tip – If you have a thermistor probe that is not listed, try going down the list to see if it works with another manufacturer’s probe setting.
+ 
+NUMBER OF CONDUCTORS
+Determining the number of conductors a meat probe has can be tricky because a lot of 2-Wire probes will have 3 conductor jacks.
+2	CONDUCTOR PLUG
+These are very common with thermistor and RTD meat probes and may need a 2.5mm to 3.5mm adapter.
+Click “Save” when done.
+3	CONDUCTOR PLUG
+These are very common with high-end RTD meat probes.
+Click “Save” when done.
+A lot of 2 conductor meat probes will have a 3 conductor plug.
+
+4	CONDUCTOR PLUG
+True Kelvin Temperature Measurement is only achieved using 4 conductors.
+This is not common with pellet grills.
+Click “Save” when done.
+NOTE – To use a 4-Wire meat probe, you must remove the jumper in the meat probe terminal block. See Meat Probe Jumpers in this manual.
+Pro Tip – To get better accuracy using a 3-Wire meat probe, you must remove the jumper in the meat probe terminal block. See Meat Probe Jumpers in this manual.
+ 
+Web App
+The Predictive Analytics Temperature Control (PATC) is only settable using the web app. *Except for Slew Rate
+
+From the Config tab in the web app, scroll down to “PATC”.
+
+This shows the current settings of PATC.
+
+
+
+
+
+
+
+SLEW RATE
+The slew rate is the change of temperature per unit of time:
+∆T/∆t. That is, the maximum rate at which a pellet grill can respond to an abrupt change of input fuel.
+
+Click “Save” when done.
+
+Pro Tip – Grill overshoot can be controlled by limiting output slew rate but will be problematic if faster temp convergence is desired.
+ 
+ENABLE FLAME-OUT & FLAME-ON DETECTION
+From the Config tab under PATC, Enable Flame-Out & Flame-On Detection checkbox is ON (unchecked) by default.
+Click “Save” when done.
+
+FLAME-OUT DETECT TIME
+Flame-Out Detect Time default is 5 minutes. The Flame-Out Detect Time(m) is a timer that sets how long the grill is allowed to drop temperature (with the auger running) before it shuts the grill off.
+Click “Save” when done.
+ 
+FLAME-ON DETECT TEMP
+This value sets the rise in temp above the Outside Temperature during Igniter On Time. Default is 10F.
+Click “Save” when done.
+
+
+Example: If the Outside temp is 80F and Flame-On Detect Temp is 20F, then the grill must get to 100F or higher during the Igniter On Time to pass this test.
+Note – If your grill is in direct sunlight or has been previously used and is still hot, these conditions may give a give a false positive to this test.
+
+GRAPH & FLAME-ON DETECT TEMP –During Ignite Fire, the green line (ChamberTargetTemp) shows the minimum temp the grill must get to pass the Flame-On test. The Chamber Temp must be equal to or greater than the Flame-On Detect Temp during the Ignite Fire state to pass the test.
+
+ 
+FUEL ON MINIMUM - Is the minimum time, in seconds, that PATC will run the auger to prevent flame-out.
+
+Set between 3-5 seconds. Any lower or higher can cause issues in most grills.
+Click “Save” when done.
+NOTE - Setting Fuel On Minimum too low will result in flame-outs. Setting this too high will prevent low temp cooking.
+IGNITER ON TIME - Is how long, in minutes, PATC keeps the igniter energized. During this time, the LCD and web app will display Ignite Fire in the Status.
+Set the Igniter On Time higher for very cold temperatures.
+Increase igniter life by reducing the Igniter On Time.
+Click “Save” when done.
+
+Pro Tip – Having the igniter ½ to 1 inch into the firepot will reduce the need to increase igniter on time.
+ 
+IGNITE FIRE AUGER DUTY CYCLE
+Ignite Fire Auger Duty Cycle - Is how long PATC will run the auger per minute when starting the grill. It’s a duty cycle to ensure the igniter has enough fuel to ignite when starting a grill.
+Examples:
+Setting to 30 result in a duty cycle of 30s ON/30s OFF or 20 for a duty cycle of 20s ON/ 40s OFF, etc.
+Click “Save” when done.
+
+
+Pro Tip – Reducing Ignite Fire Auger On per Minute on grills that have thick steel or are insulated will reduce temperature overshoot on startup.
+
+COOL DOWN TIME
+Cool Down Time is how long, in minutes, PATC will run the fan to cool off the grill after the cook has been finished.
+The cool down state is entered by pressing and holding the start/stop button on the front panel, clicking “Off” in the web app, or when Cook- By-Probe ends the cook. Click “Save” when done.
+Pro Tip –Cool Down state will also cool your food off. Use “Smoke When Done” (in Control tab) to keep your food warm after the cook.
+ 
+PATC modes are used for different pellet grills in the US and abroad. Each mode has custom settings to support the make of grill and also for convenience so the user doesn’t have to figure out how to setup his/her grill.
+
+
+DEFAULT MODE
+The Default Mode is for standard, Traeger ® like, pellet grills in the US.
+MEMPHIS MODE
+This is for Memphis Pellet Grills in the US
+
+AUSSIE MODE
+This is for countries that use 50Hz mains power. The name will probably be changed in the future to just 50Hz Mode.
+
+COOKSHACK PG MODE
+This is for Cookshack Pellet Grills in the US.
+MSG EXPERIMENT MODE
+This is for the Muxall Smoker Grill prototype and test grills.
+ASMOKE A350 MODE
+This is for the ASmoke A350 Grill.
+OK JOE MODE
+This is for the Oklahoma Joe Smoker Grill.
+ 
+Web App
+Graphing a cook is an excellent way to monitor your grill’s performance, the doneness of the food, and head-off any potential disasters.
+
+
+
+Click on “Add Tab” to pull up the Controller Menu. Then, click on “graph” to get the BBQ Graphs page.
+
+
+
+
+NOTE - Due to the large amount of data generated to make a graph, the Controller does not store this data in its memory. You must keep the graph open on a device that won’t go to sleep.
+ 
+
+
+ENABLE CHAMBER TEMP GRAPHING
+The Chamber Temp is graphed during Ignite Fire, Run, and Cool Down states. The Target Chamber Temp is only graphed during the Run state.
+
+
+MEAT PROBE TEMP GRAPHING
+A Meat Probe is only graphed in the Run state.
+
+
+GRAPHING A MEAT PROBE, the “Cook-By-Probe” box must be checked and the probe you want to graph, selected. Setting the Cook-By-Probe temp to 400F allows you to monitor the probe temp without the controller shutting off the grill unless your food is 400F! See Cook By Probe Setting from Web App for more info.
+ 
+READING THE GRAPHS
+Probably the best way to understand what the graphs are showing is to look at a real example.
+
+In this example, the Target Chamber Temp, green, is set to 225F.
+The actual Chamber Temp, red, shows a little overshoot at 10 minutes after start up and a dip at 35 minutes when the food was put on.
+The Cook By Probe Target Temp, blue, shows the temp set to 400F to monitor without shutting off the grill until 117 minutes into the cook when it was changed to 145F so the Cook By Probe system could stop the cook when the meat was done.
+The Probe Temp, purple, shows the probe was being used to monitor the grate temp where the food was going to go; it shows the grate temp slightly under the chamber temp. Then the Food Probe was inserted into the food at 35 minutes and then adjusted at 70 minutes.
+At about 145 minutes, the Probe Temp = Probe Target Temp and the Cook By Probe system automatically stopped the cook.
+ 
+Web App
+The Muxall Pro BBQ Controller supports online cloud updates.
+
+To get to the Update Tab, click on “Add Tab” to get the Controller Menu then “update”.
+
+
+
+
+
+CAUTION – DO NOT push buttons on the front panel while the update is in progress. Unplug all meat probes.
+
+Note – Only select “Latest” unless otherwise instructed by Muxall LLC
+support.
+ 
+WHY DOES THE CONTROLLER OVERSHOOT ON STARTUP?
+Usually, overshooting the temperature on startup is caused by too many pellets in the burn pot. Try changing the Ignite Fire Auger DC to 20 seconds or less under PATC in the Config tab.
+
+
+WHY IS THE GRILL RUNNING 10 OR MORE DEGREES ABOVE THE SET TEMP AT LOW TEMPERATURES?
+This is usually caused by too high of a Fuel On Min (FOM). Try reducing the FOM to 3 under PATC in the Config tab.
+
+ 
+WHY IS THE GRILL RUNNING 10 OR MORE DEGREES ABOVE THE SET TEMP AT HIGH TEMPERATURES?
+This is usually caused by too slow of a SlewRate. Slew rate is how aggressively PATC tries to reach its target temp; like a gas pedal in a car. A Slow slew rate is like taking your foot off the gas pedal about 1/16". If it's not enough, the grill won't slow down. Change to a more aggressive (faster) slew rate.
+
+
+WHY IS THE TEMP SWINGING SO MUCH?
+If you are running Precision Cook or Min Smoke and you are seeing massive swings, this is usually caused by a burn pot full of ash.
+
+If you are running Max Smoke or Min Smoke, weather is most likely the cause. Wind, humidity and temperature all contribute to how well or not so well a grill runs.
+
+WHY IS THE TEMP NOT SWINGING?
+If you are running Max Smoke and you are not seeing any swinging. This is usually caused by high humidity. Humid air is slow to heat up and slow to cool off. Don’t worry, you should still be getting good smoke because the controller is burning the same amount of wood.
+ 
+FAQ – Cont.
+WHY IS MY GRILL SHOWING “FLAME OUT” OR “FLAME ON?
+Flame Out and Flame On Detection tests the following:
+1.	Did Ignite Fire reach its Flame-On Detect Temp?
+2.	Has the auger been running without the pit temp rising for longer than Flame-Out Detect Time?
+
+The Flame-Out & Flame-On Detection will Pause the cook and start an alarm if the grill fails either of the tests. There is no auto-relight.
+Someone will have to fill the hopper, or fix whatever caused the test failure, and push "Start" to resume the cook.
+
+GRAPH & FLAME-ON DETECT TEMP –During Ignite Fire, the green line (ChamberTargetTemp) shows the minimum temp the grill must get to pass the Flame-On test. The Chamber Temp must be equal to or greater than the Flame-On Detect Temp during the Ignite Fire state to pass the test. See the section on Flame-On detection for an example graph.
+
+WHY IS MY GRILL SHOWING “CHMBR PROBE?
+The chamber (pit) temperature probe sanity check detected an error.
+WHY IS MY GRILL SHOWING “OVER TEMP?
+The controller’s “Outside” temperature has reached 150F and has
+triggered the Over Temp alarm and switched to the Cool Down state.
+ 
+
+ALL MODELS EXCEPT MODEL 600
+
+
+MODEL 600 PATC SETTINGS
+
+ 
+The Muxall Pro BBQ Controller maximum and minimum limits.
+MaxCookTemp = 500F MinCookTemp = 120F Smoke Mode = 150F
+Max Cook Time = 995 Minutes
+Max WiFi SSID Length = 31 Characters
+Max WiFi Password Length = 31 Characters Max Recipe Name Length = 10 Characters
+Max Pellet Hopper Vibrator Run PHV for minutes = 255 Min Pellet Hopper Vibrator Run PHV for minutes = 1
+ 
+QC Checklist
+BENCH TEST
+	 Button LEDs
+	 LCD Back Light
+	 Chamber Probe Temp
+	 Meat Probe #1 Temp & Label
+	 Meat Probe #2 Temp & Label
+	 Meat Probe #3 Temp & Label
+	 Rotary Encoder Left/Right/Button
+	 Button Panel Arrows Up/Down/Right/Left
+	 Button Panel Light/Start/Lock/Enter
+	 Check LCD clarity
+
+
+FIELD TEST
+	 Verify Igniter / Auger / Fan / PHV
+	 Meat Probes 1/2/3 Accuracy
+	 Chamber Temp Accuracy
+	 Controller Holds 225F +- 5F on Min Smoke Mode
+
+
+BOXING
+	 Default Config
+	 Mac Address
+	 Warning Labels & Screws
+	 Optional External Antenna / Meat Probes

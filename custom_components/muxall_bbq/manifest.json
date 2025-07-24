@@ -1,0 +1,9 @@
+{
+  "domain": "muxall_bbq",
+  "name": "Muxall BBQ Controller",
+  "version": "0.1.0",
+  "documentation": "https://github.com/your-repo/muxall_bbq",
+  "requirements": [],
+  "codeowners": ["@your-github-username"],
+  "config_flow": true
+} 

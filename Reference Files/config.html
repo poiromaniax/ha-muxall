@@ -1,0 +1,603 @@
+<?xml version="1.1"?>
+<!-- NOTE: Any NULL bytes in requests and responses are preserved within this output, even though this strictly breaks the XML syntax. If your XML parser rejects the NULL bytes then you will need to remove or replace these bytes before parsing. Alternatively, you can use the option to base64-encode requests and responses. -->
+<!DOCTYPE items [
+<!ELEMENT items (item*)>
+<!ATTLIST items burpVersion CDATA "">
+<!ATTLIST items exportTime CDATA "">
+<!ELEMENT item (time, url, host, port, protocol, method, path, extension, request, status, responselength, mimetype, response, comment)>
+<!ELEMENT time (#PCDATA)>
+<!ELEMENT url (#PCDATA)>
+<!ELEMENT host (#PCDATA)>
+<!ATTLIST host ip CDATA "">
+<!ELEMENT port (#PCDATA)>
+<!ELEMENT protocol (#PCDATA)>
+<!ELEMENT method (#PCDATA)>
+<!ELEMENT path (#PCDATA)>
+<!ELEMENT extension (#PCDATA)>
+<!ELEMENT request (#PCDATA)>
+<!ATTLIST request base64 (true|false) "false">
+<!ELEMENT status (#PCDATA)>
+<!ELEMENT responselength (#PCDATA)>
+<!ELEMENT mimetype (#PCDATA)>
+<!ELEMENT response (#PCDATA)>
+<!ATTLIST response base64 (true|false) "false">
+<!ELEMENT comment (#PCDATA)>
+]>
+<items burpVersion="2025.6.5" exportTime="Tue Jul 22 10:33:06 IDT 2025">
+  <item>
+    <time>Tue Jul 22 10:25:57 IDT 2025</time>
+    <url><![CDATA[http://192.168.0.9/config.html]]></url>
+    <host ip="192.168.0.9">192.168.0.9</host>
+    <port>80</port>
+    <protocol>http</protocol>
+    <method><![CDATA[GET]]></method>
+    <path><![CDATA[/config.html]]></path>
+    <extension>html</extension>
+    <request base64="false"><![CDATA[GET /config.html HTTP/1.1
+Host: 192.168.0.9
+Accept-Language: en-US,en;q=0.9
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Referer: http://192.168.0.9/
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+
+]]></request>
+    <status>200</status>
+    <responselength>16767</responselength>
+    <mimetype>HTML</mimetype>
+    <response base64="false"><![CDATA[HTTP/1.1 200 OK
+Content-Length: 16607
+Content-Type: text/html
+Content-Disposition: inline; filename="config.html"
+Connection: close
+Accept-Ranges: none
+
+<!DOCTYPE html>
+<!-- <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"> -->
+<head>
+<meta charset="UTF-8">
+
+<title>BBQ Config</title>
+
+<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" type="text/css" href="jquery-ui.css">  
+  
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="libtools.js"></script>
+<script type="text/javascript" src="config.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function(){
+	
+	$("#showPassword").change(function(event) {	
+		showPassword();
+		event.preventDefault();
+	});
+	
+	$("#isPHV").change(function(event) {	
+		checkPHV();
+		flashElement("#btnSaveConfig",ON);
+		event.preventDefault();
+	});
+	
+	$("#phvMode").change(function(event){
+		checkPhvMode();
+		flashElement("#btnSaveConfig",ON);
+		event.preventDefault();
+	});
+
+	$("#isMDNS").change(function(event) {
+		var enableMDNS = $('#isMDNS').is(':checked');	
+		console.log("isMDNS changed = " + enableMDNS);
+		if (enableMDNS){
+			alert("Currently mDNS only works with Apple Products,\n" +
+						"Windows 10, and Linux.  It does not work with Android.\n" +
+						"Windows 7 requires Bonjour Print Services installed.");
+		}
+		checkMDNS();
+		$("#isReboot").val('1');
+		//console.log("MDNS isReboot = " + $("#isReboot").val());
+		event.preventDefault();
+	});	
+	
+	$("#hostName").keyup(function(event) {	
+		checkMDNS();
+		event.preventDefault();
+	});	
+		
+	$("#isDHCP").change(function(event) {	
+		scanDHCP();
+		$("#isReboot").val('1');
+		//console.log("DHCP isReboot = " + $("#isReboot").val());
+		flashElement("#btnSaveConfig",ON);
+		event.preventDefault();
+	});
+		
+	$("#slewRate").change(function(event){
+		scanSlewRate();
+		flashElement("#btnSaveConfig",ON);
+		event.preventDefault();
+	});
+	
+	$("#probe0Type").change(function(event){
+		selProbe0Type();
+		$("#isProbeChange").val("1");
+		flashElement("#btnSaveConfig",ON);
+		event.preventDefault();
+	});
+
+	$("#probe0Model").change(function(event){
+		selProbe0Model();
+		$("#isProbeChange").val("1");
+		flashElement("#btnSaveConfig",ON);
+		event.preventDefault();
+	});
+	
+	$("#probe0NumWires").change(function(event){
+		selProbe0NumWires();
+		$("#isProbeChange").val("1");
+		flashElement("#btnSaveConfig",ON);
+		event.preventDefault();
+	});
+	
+	$("#probe1Type").change(function(event){
+		selProbe1Type();
+		$("#isProbeChange").val("1");
+		flashElement("#btnSaveConfig",ON);
+		event.preventDefault();
+	});
+	
+	$("#probe1Model").change(function(event){
+		selProbe1Model();
+		$("#isProbeChange").val("1");
+		flashElement("#btnSaveConfig",ON);
+		event.preventDefault();
+	});
+	
+	$("#probe1NumWires").change(function(event){
+		selProbe1NumWires();
+		$("#isProbeChange").val("1");
+		flashElement("#btnSaveConfig",ON);
+		event.preventDefault();
+	});
+	
+	$("#probe2Type").change(function(event){
+		selProbe2Type();
+		$("#isProbeChange").val("1");
+		flashElement("#btnSaveConfig",ON);
+		event.preventDefault();
+	});
+	
+	$("#probe2Model").change(function(event){
+		selProbe2Model();
+		$("#isProbeChange").val("1");
+		flashElement("#btnSaveConfig",ON);
+		event.preventDefault();
+	});
+	
+	$("#probe2NumWires").change(function(event){
+		selProbe2NumWires();
+		$("#isProbeChange").val("1");
+		flashElement("#btnSaveConfig",ON);
+		event.preventDefault();
+	});
+	
+	$("#probe3Type").change(function(event){
+		selProbe3Type();
+		$("#isProbeChange").val("1");
+		flashElement("#btnSaveConfig",ON);
+		event.preventDefault();
+	});
+	
+	$("#probe3Model").change(function(event){
+		selProbe3Model();
+		$("#isProbeChange").val("1");
+		flashElement("#btnSaveConfig",ON);
+		event.preventDefault();
+	});
+	
+	$("#probe3NumWires").change(function(event){
+		selProbe3NumWires();
+		$("#isProbeChange").val("1");
+		flashElement("#btnSaveConfig",ON);
+		event.preventDefault();
+	});
+	
+	$("#btnSaveConfig").click(function(event){ 			
+		var isReboot = $("#isReboot").val();
+		//console.log("isReboot = " + isReboot);
+		if (isReboot == '1'){
+			alert("Critical settings have changed.  Please reboot contoller.");
+		}
+		saveConfig();
+		
+	  flashElement("#btnSaveConfig",OFF);
+		event.preventDefault();
+	});
+	
+			
+	$(".configProfile").change(function(event){
+		$("#isReboot").val('1');
+		//console.log("ConfigProfile isReboot = " + $("#isReboot").val());
+		event.preventDefault();
+	});
+	
+	$(".configInput").change(function(event){
+		$("#isReboot").val('1');
+		//console.log("ConfigInput isReboot = " + $("#isReboot").val());
+		  event.preventDefault();
+	});
+	
+	$("#configNetwork").change(function(event){
+		flashElement("#btnSaveConfig",ON);
+		event.preventDefault();
+	});
+	
+	$("#configFuelControl").change(function(event){
+		flashElement("#btnSaveConfig",ON);
+		event.preventDefault();
+	});
+	
+	$("#configPATC").change(function(event){
+		flashElement("#btnSaveConfig",ON);
+		event.preventDefault();
+	});
+	
+	$("#tempScale").change(function(event){
+		$("#isReboot").val('1');
+		//console.log("tempScale isReboot = " + $("#isReboot").val());
+		scanTempScale();
+		event.preventDefault();
+	});
+
+});  //End of document.ready
+</script>
+
+</head>
+
+<body onload="init()">
+	<p class="title">BBQ Config
+		<svg id="wifiStatusBars" width="60" height="50" style='float: right;'>
+			<rect id='wifiBar1' x="7"  y="35" width="10" height="5" fill="lightgrey" stroke="black" />
+			<rect id='wifiBar2' x="17" y="30" width="10" height="10" fill="lightgrey"stroke="black" />
+			<rect id='wifiBar3' x="27" y="25" width="10" height="15" fill="lightgrey" stroke="black" />
+			<rect id='wifiBar4' x="37" y="20" width="10" height="20" fill="lightgrey" stroke="black" />
+			<rect id='wifiBar5' x="47" y="15" width="10" height="25" fill="lightgrey" stroke="black" />			
+			<text x="20" y="50" class="small" fill="blue">Wi-Fi</text>
+			<text x="0" y="22" class="small" fill="blue">2.4GHz</text>
+		</svg>
+	</p>
+  <hr>
+<!--    <a href="./control.html" target="_blank">Controller</a> -->
+  <hr>
+	<!-- -------------Fuel Control aka Pellets Level----------------- -->
+	<form id="configFuelControl">
+		<p class="heading1">Pellets Level Tracking</p>
+		<br>
+		<table border=1>
+			<tr>								
+				<td class="status">Auger Run Minutes</td>
+			</tr>
+			<tr>						
+				<td class="status" id='TotalAugerRunMinutes' data-value='0' >0</td>
+			</tr>
+		</table>
+		<br>
+		<table class="profiles">
+			<tr>
+			<td>Pellets Level Tracking </td>
+			<td><input type='checkbox' id='isPelletsLevelTracking'> Enable </td>
+			</tr>
+			<tr>
+			<td>Full To Empty Auger Run Minutes</td>
+			<td><input class="profileBox" type='text' value=0 id='FullToEmptyAugerRunMinutes'></td>	
+			</tr>
+		</table>
+		<br><br>
+		<hr>
+  </form>
+		<!-- -------------Pellet Hopper Vibrator----------------- -->
+	<form id="configPelletHopperVibrator">
+		<p class="heading1">Pellet Hopper Vibrator</p>
+		<br>
+		<table class="profiles">
+			<tr>
+			<td>PHV </td>
+			<td><input type='checkbox' id='isPHV'> Enable </td>
+			</tr>
+		</table>
+		<br>
+		<p>PHV
+			<select class="selectBox" id="phvMode">
+				<option  value='1' selected='selected' >AugerTime</option>
+				<option  value='2'>Timer</option>
+				<option  value='3'>RunWithAuger</option>
+				<option  value='4'>Continuous</option>
+			</select><span>Mode</span>
+		</p>
+		<br>
+		<table class="profiles">
+			<tr>
+			<td>Run PHV for </td><td><input class="profileBox" type='text' value=1 id='phvRunMinutes'></td>
+			<td> minutes </td><td> every </td><td><input class="profileBox" type='text' value=30 id='phvTimerInterval'></td><td> minutes.</td>
+			</tr>
+		</table>
+		<br><br>
+		<hr>
+  </form>
+  <!-- ------------------------Networking -------------------------- -->
+
+  
+  <form id="configNetwork">
+	<p class="heading1">Network</p>
+	<br> 
+	<p>WiFi SSID<input class="configInput" type="text" maxlength="25" id="wifiSSID" value=""></p><br>
+	<p>WiFi Password<input class="configInput" type="password" maxlength="25" id="wifiPassword" value="">
+		<input type='checkbox' id="showPassword" >Show Password</p><br>
+	<br>	
+	<!-- <p>Change User Password<input class="configInput" type="text" maxlength="25" id="setUserPassword"></p><br> -->
+	<p class="heading2" id="nameURL"></p><br>
+	<p>Controller Name<input class="configInput" type="text" maxlength="25" id="hostName">
+		<input type='checkbox' id="isMDNS" >Enable mDNS (Experimental)</p><br>		
+	<br>	
+	<p><input type='checkbox' id="isDHCP">Use DHCP<br></p>
+	<input type='hidden' id="isReboot" >
+	<br>
+	<p>IP Address
+		<input class="configProfile" type="text" id="ipAddr_1" pattern="\d{1,3}">
+		<input class="configProfile" type="text" id="ipAddr_2"  pattern="\d{1,3}">
+		<input class="configProfile" type="text" id="ipAddr_3"  pattern="\d{1,3}">
+		<input class="configProfile" type="text" id="ipAddr_4"  pattern="\d{1,3}"><br>
+		Subnet Mask
+		<input class="configProfile" type="text" id="sub_1"  pattern="\d{1,3}">
+		<input class="configProfile" type="text" id="sub_2" pattern="\d{1,3}">
+		<input class="configProfile" type="text" id="sub_3" pattern="\d{1,3}">
+		<input class="configProfile" type="text" id="sub_4" pattern="\d{1,3}"><br>
+		Default Gateway
+		<input class="configProfile" type="text" id="gw_1"  pattern="\d{1,3}">
+		<input class="configProfile" type="text" id="gw_2" pattern="\d{1,3}">
+		<input class="configProfile" type="text" id="gw_3" pattern="\d{1,3}">
+		<input class="configProfile" type="text" id="gw_4" pattern="\d{1,3}"><br>
+	</p><br>
+	<br>
+	<hr>
+  </form>
+   <!-- ------------------------Temperature Probes -------------------------- -->
+
+  <form id="configProbes">
+	<input type='hidden' id="isProbeChange" >
+	<p class="heading1">Temperature Probes</p>
+	<br>
+	<p class="heading2">Meat Probe 1</p>
+	<img id="probe1Pic" src="AudioPlug_2_120px.png" alt="2-Wire Audio Plug" style="float:right">
+	<br> 
+	<p> Type:
+		<select class="selectBox" id="probe1Type">
+			<option  value='1' selected='selected'>RTD</option>
+			<option  value='2'>Thermocouple</option>
+			<option  value='3'>Thermistor</option>
+		</select>
+	</p>
+	<p> Model:
+		<select class="selectBox" id="probe1Model">
+			
+		</select>
+	</p>
+	<p> Conductors:
+		<select class="selectBox" id="probe1NumWires">
+			<option  value='2' selected='selected'>2-Wire</option>
+			<option  value='3'>3-Wire</option>
+			<option  value='4'>4-Wire</option>
+		</select>
+	</p>
+	<br>
+	
+	<p class="heading2">Meat Probe 2</p>
+	<img id="probe2Pic" src="AudioPlug_2_120px.png" alt="2-Wire Audio Plug" style="float:right">
+	<br> 
+	<p> Type:
+		<select class="selectBox" id="probe2Type">
+			<option  value='1' selected='selected'>RTD</option>
+			<option  value='2'>Thermocouple</option>
+			<option  value='3'>Thermistor</option>
+		</select>
+	</p>
+	<p> Model:
+		<select class="selectBox" id="probe2Model">
+			
+		</select>
+	</p>
+	<p> Conductors:
+		<select class="selectBox" id="probe2NumWires">
+			<option  value='2' selected='selected'>2-Wire</option>
+			<option  value='3'>3-Wire</option>
+			<option  value='4'>4-Wire</option>
+		</select>
+	</p>
+	<br>
+	
+	<p class="heading2">Meat Probe 3</p>
+	<img id="probe3Pic" src="AudioPlug_2_120px.png" alt="2-Wire Audio Plug" style="float:right">
+	<br> 
+	<p> Type:
+		<select class="selectBox" id="probe3Type">
+			<option  value='1' selected='selected'>RTD</option>
+			<option  value='2'>Thermocouple</option>
+			<option  value='3'>Thermistor</option>
+		</select>
+	</p>
+	<p> Model:
+		<select class="selectBox" id="probe3Model">
+			
+		</select>
+	</p>
+	<p> Conductors:
+		<select class="selectBox" id="probe3NumWires">
+			<option  value='2' selected='selected'>2-Wire</option>
+			<option  value='3'>3-Wire</option>
+			<option  value='4'>4-Wire</option>
+		</select>
+	</p>
+	<br>
+	
+	<p class="heading2">Chamber Probe</p>
+	<img id="probe0Pic" src="TB_RTD_2Wire_Share.png" alt="2-Wire RTD" style="float:right">
+	<br> 
+	<p> Type:
+		<select class="selectBox" id="probe0Type">
+			<option  value='1' selected='selected'>RTD</option>
+			<option  value='2'>Thermocouple</option>
+			<option  value='3'>Thermistor</option>
+		</select>
+	</p>
+	<p> Model:
+		<select class="selectBox" id="probe0Model">
+			
+		</select>
+	</p>
+	<p> Conductors:
+		<select class="selectBox" id="probe0NumWires">
+			<option  value='2' selected='selected'>2-Wire</option>
+			<option  value='3'>3-Wire</option>
+			<option  value='4'>4-Wire</option>
+		</select>
+	</p>
+	<br>
+  </form>
+  <hr>
+   <!-- ------------------------PATC Config -------------------------- -->
+  <form id="configPATC">
+	<p class="heading1">PATC</p>
+	<br> 
+	<p> SlewRate:
+		<select class="selectBox" id="slewRate">
+			<option  value='1'>Slow1</option>
+			<option  value='2'>Slow2</option>
+			<option  value='3'>Slow3</option>
+			<option  value='4'>Medium1</option>
+			<option  value='5'>Medium2</option>
+			<option  value='6' selected='selected' >Default</option>
+			<option  value='7'>Fast1</option>
+			<option  value='8'>Fast2</option>
+			<option  value='9'>Fast3</option>
+			<option  value='10'>Max</option>
+		</select>
+	  </p>
+	<br>
+	<p>Temperature Scale:
+		<select class="selectBox" id="tempScale">
+			<option  value='1' selected='selected' >(F)ahrenheit</option>
+			<option  value='2'>(C)elsius</option>
+		</select><span>Reboot Required!</span>
+	</p>
+	<br>
+	<table class="profiles">
+		<tr>
+		<td><input type='checkbox' id='isFlameOutDetect'>Enable Flame-Out & Flame-On Detection (Default = Unchecked)</td>
+		</tr>
+  </table>
+	<br>
+	<table class="profiles">
+		<tr>
+		<td>Flame-Out Detect Time:</td><td><input class="profileBox" type='text' value=0 id='flameOutDetectTime'></td>
+		<td> minutes. (Default = 5)</td>
+		</tr>
+  </table>
+	<br>
+	<table class="profiles">
+		<tr>
+		<td>Flame-On Detect Temp:</td><td><input class="profileBox" type='text' value=0 id='IgniteFireTempRise'></td>
+		<td><span id='scale'>&#0176;F</span> (Default = 1, Disable = 0) Chamber Temp Rise Above Outside </td>
+		</tr>
+  </table>
+	<br>
+	<table class="profiles">
+		<tr>
+		<td>Fuel On Minimum:</td><td><input class="profileBox" type='text' value=0 id='FuelOnMinSeconds'></td>
+		<td> seconds. (Default = 4)</td>
+		</tr>
+  </table>	
+	<br>
+<!-- 	<table class="profiles">
+		<tr>
+		<td>Bypass Ignite Fire </td>
+		<td><input type='checkbox' id='isWarmUpByPass'> WARNING: This will bypass energizing the igniter!</td>
+		</tr>
+  </table>
+	<br> -->
+	<table class="profiles">
+		<tr>
+		<td>Igniter On Time:</td><td><input class="profileBox" type='text' value=0 id='WarmUpTimeMinutes'></td>
+		<td> minutes. (Default = 4)</td>
+		</tr>
+  </table>
+	<br>
+	<table class="profiles">
+		<tr>
+		<td>Ignite Fire Auger DC - Run Auger:</td><td><input class="profileBox" type='text' value=0 id='WarmUpAugerOnTime'></td>
+		<td> seconds per minute. (Default = 30)</td>
+		</tr>
+  </table>	
+	<br>
+	<table class="profiles">
+		<tr>
+		<td>Cool Down Time:</td><td><input class="profileBox" type='text' value=0 id='CoolDownTimeMinutes'></td>
+		<td> minutes. (Default = 5)</td>
+		</tr>
+  </table>
+	<br>
+	<p class="heading2">PATC Modes</p><br>
+<!-- 	<p>
+		<input type='radio' name='patcMode' value='0' checked> Default Mode
+		<input type='radio' name='patcMode' value='1'> Memphis Mode
+		<input type='radio' name='patcMode' value='2'> Aussie Mode - 50Hz
+		<input type='radio' name='patcMode' value='3'> Cookshack PG
+		<input type='radio' name='patcMode' value='4'> MSG Experiment
+	</p> -->
+
+	<p> PATC Mode:
+		<select class="selectBox" id='patcMode'>
+			<option  value='0' selected='selected' >Default Mode</option>
+			<option  value='1'>Memphis Grill</option>
+			<option  value='2'>Z-Grills 50Hz Mode</option>
+			<option  value='3'>Cookshack-Insulated Grill</option>
+			<option  value='4'>Z-Grills 600x</option>
+			<option  value='5'>ASmoke A350</option>
+			<option  value='6'>OK Joe Grill</option>
+			<option  value='7'>Z-Grills 2.0 RPM Auger</option>
+		</select>
+	  </p>
+<!-- 	<table class="profiles">
+		<tr>
+		<td>Memphis Mode</td>
+		<td><input type='checkbox' id='isMemphis'> Only for Memphis Grills! (Default = Unchecked)</td>
+		</tr>
+  </table>	 -->
+	<br><br>
+	<hr>
+	<button class="btn" id="btnSaveConfig">Save</button>
+	<br>
+	<br>
+	<br>
+	<hr>
+	<hr>
+  </form>
+  <!----------------------------------------------------------------------------------------------------------> 
+  <!--BBQ Console for Debug  -->
+  <form>
+	  <textarea id="console" rows='10' cols='70' >
+	  </textarea>
+  </form>
+</body>
+</html>
+
+
+
+
+
+]]></response>
+    <comment></comment>
+  </item>
+</items>

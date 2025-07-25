@@ -55,21 +55,17 @@ class MuxallBBQWebSocketClient:
             await asyncio.sleep(5)  # Reconnect after delay
 
     async def _handshake_and_login(self):
-        # Send login/auth message if credentials are provided
+        # Send REGISTER message as a plain string if credentials are provided
         if self._username and self._password:
-            login_msg = {
-                "type": "login",
-                "username": self._username,
-                "password": self._password
-            }
-            await self._ws.send(json.dumps(login_msg))
+            # Build the REGISTER message
+            login_msg = f"REGISTER: id={self._username},userPassword={self._password}"
+            await self._ws.send(login_msg)
             resp = await self._ws.recv()
-            resp_data = json.loads(resp)
-            if resp_data.get("type") == "login_response" and resp_data.get("success"):
+            if resp.startswith("OK: REGISTER"):
                 self._authenticated = True
                 _LOGGER.info("Login successful")
             else:
-                _LOGGER.error("Login failed: %s", resp_data)
+                _LOGGER.error("Login failed: %s", resp)
                 raise Exception("Login failed")
         else:
             self._authenticated = True  # If no login required

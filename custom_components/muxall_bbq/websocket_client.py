@@ -79,12 +79,17 @@ class MuxallBBQWebSocketClient:
         # Parse and route each incoming message
         _LOGGER.debug("Received message: %s", message)
         try:
-            data = json.loads(message)
+            if message.strip().startswith("{"):
+                # Parse as JSON if the message looks like JSON
+                data = json.loads(message)
+                if self._message_callback:
+                    await self._message_callback(data)
+            else:
+                # Handle plain text messages (e.g., OK: REGISTER, OK: GET, etc.)
+                if self._message_callback:
+                    await self._message_callback({"raw": message})
         except Exception as e:
             _LOGGER.error("Failed to parse message: %s", e)
-            return
-        if self._message_callback:
-            await self._message_callback(data)
 
     async def send(self, data):
         # Send a message to the server (as JSON)

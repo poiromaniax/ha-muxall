@@ -6,8 +6,25 @@ This file is heavily commented for clarity and non-engineer readability.
 
 import logging
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator
+import re
 
 _LOGGER = logging.getLogger(__name__)
+
+# Helper to parse key-value pairs from 'OK: GET: ...' messages
+# Example: 'OK: GET: key1=val1,key2=val2,...'
+def parse_kvps_from_ok_get(message):
+    # Extract the part after 'OK: GET:'
+    try:
+        kvp_str = message.split('OK: GET:')[1].strip()
+    except IndexError:
+        return {}
+    # Split by commas, then by '='
+    kvps = {}
+    for pair in kvp_str.split(','):
+        if '=' in pair:
+            k, v = pair.split('=', 1)
+            kvps[k.strip()] = v.strip()
+    return kvps
 
 class MuxallBBQCoordinator(DataUpdateCoordinator):
     """
@@ -45,36 +62,43 @@ class MuxallBBQCoordinator(DataUpdateCoordinator):
     async def handle_message(self, data):
         """
         Handle incoming messages from the BBQ controller.
-        Each message is a dict with a 'type' field indicating its purpose.
+        Supports both JSON and plain text ('raw') messages.
         Updates only the relevant part of self.state and triggers entity refresh.
         """
+        # Handle plain text messages (e.g., OK: GET: ...)
+        if "raw" in data:
+            msg = data["raw"]
+            if msg.startswith("OK: GET:"):
+                # Parse key-value pairs and update status/config
+                kvps = parse_kvps_from_ok_get(msg)
+                # Heuristically decide if this is status or config based on keys
+                if "chamberTemp" in kvps or "bbqState" in kvps:
+                    self.state["status"].update(kvps)
+                else:
+                    self.state["config"].update(kvps)
+                await self.async_request_refresh()
+            # Optionally handle other OK: ... or NOTIFY: ... messages here
+            return
+        # Handle JSON messages (if any)
         msg_type = data.get("type")
         if msg_type == "state_update":
-            # Update live status (e.g., temperatures, fan, etc.)
             self.state["status"].update(data)
         elif msg_type == "config":
-            # Update device configuration
             self.state["config"] = data
         elif msg_type == "history":
-            # Update historical readings for graphing
             self.state["history"] = data.get("readings", [])
         elif msg_type == "update_status":
-            # Update firmware/software update info
             self.state["update"].update(data)
         elif msg_type == "error":
-            # Log error and update error state
             self.state["errors"].append(data)
             self.state["connection"]["last_error"] = data.get("message")
         elif msg_type == "login_response":
-            # Update authentication status
             self.state["connection"]["authenticated"] = data.get("success", False)
         elif msg_type == "pong":
-            # Heartbeat/keepalive, no state update needed
             pass
         else:
-            # Unknown message type, log for debugging
-            _LOGGER.warning(f"Unknown message type received: {msg_type}")
-        # Notify Home Assistant entities to refresh
+            if msg_type is not None:
+                _LOGGER.warning(f"Unknown message type received: {msg_type}")
         await self.async_request_refresh()
 
     async def request_full_state(self):
@@ -83,7 +107,7 @@ class MuxallBBQCoordinator(DataUpdateCoordinator):
         This should be called after reconnect to repopulate self.state.
         """
         # Example requests; adjust message types as per your controller's protocol
-        await self.ws_client.send({"type": "get_config"})
         await self.ws_client.send({"type": "get_status"})
+        await self.ws_client.send({"type": "get_config"})
         await self.ws_client.send({"type": "get_history"})
         await self.ws_client.send({"type": "get_update_status"}) 
